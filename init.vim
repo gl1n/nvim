@@ -1,0 +1,129 @@
+nnoremap <SPACE> <Nop>
+let mapleader=" "
+   
+" 显示行号
+set number
+" 显示相对行号
+set relativenumber
+
+" 显示光标所在行
+set cursorline
+" 显示光标所在位置的行号和列号
+set ruler
+
+" 上下翻动时，预留3行显示
+set scrolloff=3
+
+" 用空格替换tab
+set expandtab
+" 默认缩进4个空格
+set shiftwidth=4
+" 制表符占4个空格
+set tabstop=4
+
+" 换行时根据代码智能地添加缩进
+set smartindent
+
+" 搜索时同时匹配多个
+set incsearch
+
+" 高亮搜索(使用:noh取消高亮)
+set hlsearch
+
+" 键位映射
+inoremap jk <ESC>
+
+" 可以使用鼠标
+:set mouse=a
+
+
+" 插件安装
+call plug#begin()
+
+Plug 'https://github.com/vim-airline/vim-airline'
+
+" 文件树
+Plug 'kyazdani42/nvim-web-devicons' " optional, for file icons
+Plug 'kyazdani42/nvim-tree.lua'
+" coc
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+
+" 文档解析
+Plug 'https://github.com/preservim/tagbar'
+
+Plug 'nvim-lua/plenary.nvim'
+Plug 'nvim-telescope/telescope.nvim'
+
+Plug 'voldikss/vim-floaterm'
+
+Plug 'folke/tokyonight.nvim', { 'branch': 'main' }
+
+Plug 'mhinz/vim-startify'
+
+Plug 'fatih/vim-go'
+
+call plug#end()
+
+" 插件 Setups
+lua << EOF
+require("nvim-tree").setup()
+EOF
+
+" 主题颜色
+" Example config in VimScript
+let g:tokyonight_style = "night"
+let g:tokyonight_italic_functions = 1
+let g:tokyonight_sidebars = [ "qf", "vista_kind", "terminal", "packer" ]
+
+" Change the "hint" color to the "orange" color, and make the "error" color bright red
+let g:tokyonight_colors = {
+  \ 'hint': 'orange',
+  \ 'error': '#ff0000'
+\ }
+" Load the colorscheme
+colorscheme tokyonight
+
+" 快捷键设置
+" Use tab for trigger completion with characters ahead and navigate.
+" NOTE: Use command ':verbose imap <tab>' to make sure tab is not mapped by
+" other plugin before putting this into your config.
+
+" For nvim-tree
+nnoremap <C-f> :NvimTreeFocus<CR> 
+nnoremap <C-n> :NvimTreeCollapse<CR>
+nnoremap <C-j> :NvimTreeToggle<CR>
+
+nmap <F6> :TagbarToggle<CR>
+
+" For telescope
+" Find files using Telescope command-line sugar.
+nnoremap <leader>ff <cmd>Telescope find_files<cr>
+nnoremap <leader>fg <cmd>Telescope live_grep<cr>
+nnoremap <leader>fb <cmd>Telescope buffers<cr>
+nnoremap <leader>fh <cmd>Telescope help_tags<cr>
+
+" For Floaterm
+" F4 键退出terminal模式
+tnoremap <silent> <F4> <C-\><C-n>
+
+nnoremap <leader>ti <cmd>FloatermNew<cr>
+nnoremap <leader>tt <cmd>FloatermToggle<cr>
+nnoremap <leader>tp <cmd>FloatermPrev<cr>
+nnoremap <leader>tn <cmd>FloatermNext<cr>
+" 关闭所有terminal
+nnoremap <leader>tak <cmd>FloatermKill!<cr>
+" 关闭当前terminal
+nnoremap <leader>tk <cmd>FloatermKill<cr>
+
+
+" For tab auto-completion
+inoremap <silent><expr> <TAB>
+      \ pumvisible() ? "\<C-n>" :
+      \ <SID>check_back_space() ? "\<TAB>" :
+      \ coc#refresh()
+inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+
+function! s:check_back_space() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~# '\s'
+endfunction

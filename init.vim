@@ -1,6 +1,3 @@
-nnoremap <SPACE> <Nop>
-let mapleader=" "
-   
 " 显示行号
 set number
 " 显示相对行号
@@ -60,13 +57,45 @@ Plug 'folke/tokyonight.nvim', { 'branch': 'main' }
 
 Plug 'mhinz/vim-startify'
 
-Plug 'fatih/vim-go'
+Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
+
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 
 call plug#end()
 
 " 插件 Setups
 lua << EOF
 require("nvim-tree").setup()
+EOF
+
+lua << EOF
+require'nvim-treesitter.configs'.setup {
+  -- A list of parser names, or "all"
+  ensure_installed = { "go", "cpp" },
+
+  -- Install parsers synchronously (only applied to `ensure_installed`)
+  sync_install = false,
+
+  -- List of parsers to ignore installing (for "all")
+  -- ignore_install = { "javascript" },
+
+  highlight = {
+    -- `false` will disable the whole extension
+    enable = true,
+
+    -- NOTE: these are the names of the parsers and not the filetype. (for example if you want to
+    -- disable highlighting for the `tex` filetype, you need to include `latex` in this list as this is
+    -- the name of the parser)
+    -- list of language that will be disabled
+    -- disable = { "c", "rust" },
+
+    -- Setting this to true will run `:h syntax` and tree-sitter at the same time.
+    -- Set this to `true` if you depend on 'syntax' being enabled (like for indentation).
+    -- Using this option may slow down your editor, and you may see some duplicate highlights.
+    -- Instead of true it can also be a list of languages
+    additional_vim_regex_highlighting = false,
+  },
+}
 EOF
 
 " 主题颜色
@@ -88,12 +117,18 @@ colorscheme tokyonight
 " NOTE: Use command ':verbose imap <tab>' to make sure tab is not mapped by
 " other plugin before putting this into your config.
 
+nnoremap <SPACE> <Nop>
+let mapleader=" "
+inoremap <C-s> <cmd>:w<cr>
+
+
 " For nvim-tree
-nnoremap <C-f> :NvimTreeFocus<CR> 
-nnoremap <C-n> :NvimTreeCollapse<CR>
-nnoremap <C-j> :NvimTreeToggle<CR>
+nnoremap <leader>pc <cmd>NvimTreeCollapse<cr>
+nnoremap <leader>pt <cmd>NvimTreeToggle<cr>
+
 
 nmap <F6> :TagbarToggle<CR>
+
 
 " For telescope
 " Find files using Telescope command-line sugar.
@@ -102,18 +137,25 @@ nnoremap <leader>fg <cmd>Telescope live_grep<cr>
 nnoremap <leader>fb <cmd>Telescope buffers<cr>
 nnoremap <leader>fh <cmd>Telescope help_tags<cr>
 
-" For Floaterm
-" F4 键退出terminal模式
-tnoremap <silent> <F4> <C-\><C-n>
 
-nnoremap <leader>ti <cmd>FloatermNew<cr>
-nnoremap <leader>tt <cmd>FloatermToggle<cr>
-nnoremap <leader>tp <cmd>FloatermPrev<cr>
-nnoremap <leader>tn <cmd>FloatermNext<cr>
+" For Floaterm
+tnoremap <silent> <C-t> <C-\><C-n>:FloatermToggle<cr>
+nnoremap <silent> <C-t> :FloatermToggle<cr>
+" F4 键退出terminal模式
+" tnoremap <silent> <F4> <C-\><C-n>
+
+" nnoremap <leader>ti <cmd>FloatermNew<cr>
+" nnoremap <leader>tt <cmd>FloatermToggle<cr>
+" nnoremap <leader>tp <cmd>FloatermPrev<cr>
+" nnoremap <leader>tn <cmd>FloatermNext<cr>
 " 关闭所有terminal
-nnoremap <leader>tak <cmd>FloatermKill!<cr>
+" nnoremap <leader>tak <cmd>FloatermKill!<cr>
 " 关闭当前terminal
-nnoremap <leader>tk <cmd>FloatermKill<cr>
+" nnoremap <leader>tk <cmd>FloatermKill<cr>
+
+
+" For vim-go
+inoremap <C-k> <C-x><C-o>
 
 
 " For tab auto-completion

@@ -1,3 +1,4 @@
+" -----------------------基础设置-----------------------
 " 显示行号
 set number
 " 显示相对行号
@@ -34,10 +35,10 @@ inoremap jk <ESC>
 :set mouse=a
 
 
-" 插件安装
+" -----------------------插件安装-----------------------
 call plug#begin()
 
-Plug 'https://github.com/vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline'
 
 " 文件树
 Plug 'kyazdani42/nvim-web-devicons' " optional, for file icons
@@ -46,7 +47,7 @@ Plug 'kyazdani42/nvim-tree.lua'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 " 文档解析
-Plug 'https://github.com/preservim/tagbar'
+Plug 'preservim/tagbar'
 
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
@@ -63,7 +64,9 @@ Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 
 call plug#end()
 
-" 插件 Setups
+
+" -----------------------插件配置-----------------------
+
 lua << EOF
 require("nvim-tree").setup()
 EOF
@@ -98,6 +101,8 @@ require'nvim-treesitter.configs'.setup {
 }
 EOF
 
+
+" -----------------------插件配置2-----------------------
 " 主题颜色
 " Example config in VimScript
 let g:tokyonight_style = "night"
@@ -112,8 +117,8 @@ let g:tokyonight_colors = {
 " Load the colorscheme
 colorscheme tokyonight
 
-" 快捷键设置
-" Use tab for trigger completion with characters ahead and navigate.
+
+" -----------------------快捷键设置-----------------------
 " NOTE: Use command ':verbose imap <tab>' to make sure tab is not mapped by
 " other plugin before putting this into your config.
 
@@ -139,26 +144,18 @@ nnoremap <leader>fh <cmd>Telescope help_tags<cr>
 
 
 " For Floaterm
-tnoremap <silent> <C-t> <C-\><C-n>:FloatermToggle<cr>
-nnoremap <silent> <C-t> :FloatermToggle<cr>
+tnoremap <silent> <F4> <C-\><C-n>:FloatermToggle<cr>
+nnoremap <silent> <F4> :FloatermToggle<cr>
 " F4 键退出terminal模式
 " tnoremap <silent> <F4> <C-\><C-n>
 
-" nnoremap <leader>ti <cmd>FloatermNew<cr>
-" nnoremap <leader>tt <cmd>FloatermToggle<cr>
-" nnoremap <leader>tp <cmd>FloatermPrev<cr>
-" nnoremap <leader>tn <cmd>FloatermNext<cr>
-" 关闭所有terminal
-" nnoremap <leader>tak <cmd>FloatermKill!<cr>
-" 关闭当前terminal
-" nnoremap <leader>tk <cmd>FloatermKill<cr>
-
 
 " For vim-go
+" Autocompletion
 inoremap <C-k> <C-x><C-o>
 
 
-" For tab auto-completion
+" Use tab/shift-tab to select completion item
 inoremap <silent><expr> <TAB>
       \ pumvisible() ? "\<C-n>" :
       \ <SID>check_back_space() ? "\<TAB>" :
@@ -169,3 +166,5 @@ function! s:check_back_space() abort
   let col = col('.') - 1
   return !col || getline('.')[col - 1]  =~# '\s'
 endfunction
+
+" -----------------------END-----------------------

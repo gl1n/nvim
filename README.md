@@ -1,7 +1,7 @@
 # nvim
 自用nvim配置
 ## 使用方法
-1. 根据官方文档安装nvim
+1. 根据[官方文档](https://github.com/neovim/neovim/wiki/Building-Neovim)安装nvim
 2. 安装依赖
 ```bash
 sudo apt install exuberant-ctags

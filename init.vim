@@ -117,6 +117,9 @@ let g:tokyonight_colors = {
 " Load the colorscheme
 colorscheme tokyonight
 
+" coc automatically install plugs
+let g:coc_global_extensions = ['coc-clangd', 'coc-pyright']
+
 
 " -----------------------快捷键设置-----------------------
 " NOTE: Use command ':verbose imap <tab>' to make sure tab is not mapped by

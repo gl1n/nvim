@@ -7,9 +7,12 @@
 1. 根据[官方文档](https://github.com/neovim/neovim/wiki/Building-Neovim)安装nvim
 2. 安装依赖
 ```bash
+# For tagbar
 sudo apt install exuberant-ctags
+
 curl -sL https://deb.nodesource.com/setup_14.x | sudo -E bash -
 sudo apt install -y nodejs
+
 # for c/cpp
 sudo apt install clangd
 ```
@@ -18,5 +21,7 @@ sudo apt install clangd
 rm -rf ~/.config/nvim
 git clone https://github.com/gl1n/nvim.git ~/.config/nvim
 cd ~/.config/nvim
-./install.sh
+git clone --depth 1 https://github.com/wbthomason/packer.nvim ~/.local/share/nvim/site/pack/packer/start/packer.nvim
+export GOPROXY=https://goproxy.cn
+nvim +PackerSync #+GoInstallBinaries
 ```

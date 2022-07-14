@@ -1,38 +1,5 @@
+lua require 'init'
 " -----------------------基础设置-----------------------
-" 显示行号
-set number
-" 显示相对行号
-set relativenumber
-
-" 显示光标所在行
-set cursorline
-" 显示光标所在位置的行号和列号
-set ruler
-
-" 上下翻动时，预留3行显示
-set scrolloff=3
-
-" 用空格替换tab
-set expandtab
-" 默认缩进4个空格
-set shiftwidth=2
-" 制表符占4个空格
-set tabstop=2
-
-" 换行时根据代码智能地添加缩进
-set smartindent
-
-" 搜索时同时匹配多个
-set incsearch
-
-" 高亮搜索(使用:noh取消高亮)
-set hlsearch
-
-" 键位映射
-inoremap jk <ESC>
-
-" 可以使用鼠标
-:set mouse=a
 
 
 " -----------------------插件安装-----------------------
@@ -120,54 +87,5 @@ colorscheme tokyonight
 " coc automatically install plugs
 let g:coc_global_extensions = ['coc-clangd', 'coc-pyright']
 
-
-" -----------------------快捷键设置-----------------------
-" NOTE: Use command ':verbose imap <tab>' to make sure tab is not mapped by
-" other plugin before putting this into your config.
-
-nnoremap <SPACE> <Nop>
-let mapleader=" "
-inoremap <C-s> <cmd>:w<cr>
-
-
-" For nvim-tree
-nnoremap <leader>pc <cmd>NvimTreeCollapse<cr>
-nnoremap <leader>pt <cmd>NvimTreeToggle<cr>
-
-
-nmap <F6> :TagbarToggle<CR>
-
-
-" For telescope
-" Find files using Telescope command-line sugar.
-nnoremap <leader>ff <cmd>Telescope find_files<cr>
-nnoremap <leader>fg <cmd>Telescope live_grep<cr>
-nnoremap <leader>fb <cmd>Telescope buffers<cr>
-nnoremap <leader>fh <cmd>Telescope help_tags<cr>
-
-
-" For Floaterm
-tnoremap <silent> <F4> <C-\><C-n>:FloatermToggle<cr>
-nnoremap <silent> <F4> :FloatermToggle<cr>
-" F4 键退出terminal模式
-" tnoremap <silent> <F4> <C-\><C-n>
-
-
-" For vim-go
-" Autocompletion
-inoremap <C-k> <C-x><C-o>
-
-
-" Use tab/shift-tab to select completion item
-inoremap <silent><expr> <TAB>
-      \ pumvisible() ? "\<C-n>" :
-      \ <SID>check_back_space() ? "\<TAB>" :
-      \ coc#refresh()
-inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
-
-function! s:check_back_space() abort
-  let col = col('.') - 1
-  return !col || getline('.')[col - 1]  =~# '\s'
-endfunction
 
 " -----------------------END-----------------------

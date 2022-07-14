@@ -15,7 +15,7 @@ return require('packer').startup(function()
 
   use 'kyazdani42/nvim-tree.lua'
 
-  use 'neoclide/coc.nvim' 
+  use {'neoclide/coc.nvim', branch='release'}
 
   use 'preservim/tagbar'
 
@@ -24,7 +24,7 @@ return require('packer').startup(function()
 
   use 'voldikss/vim-floaterm'
 
-  use 'folke/tokyonight.nvim'
+  use {'folke/tokyonight.nvim', branch='main'}
 
   use 'mhinz/vim-startify'
 

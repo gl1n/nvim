@@ -39,17 +39,8 @@ keymap('n', '<F4>', ':FloatermToggle<cr>', opts)
 -- Autocompletion
 keymap('i', '<C-k>', '<C-x><C-o>', opts)
 
-
--- Use tab/shift-tab to select completion item
--- vim.cmd([[
--- inoremap <silent><expr> <TAB>
-      -- \ pumvisible() ? --\<C-n>-- :
-      -- \ <SID>check_back_space() ? --\<TAB>-- :
-      -- \ coc#refresh()
--- inoremap <expr><S-TAB> pumvisible() ? --\<C-p>-- : --\<C-h>--
-
--- function! s:check_back_space() abort
-  -- let col = col('.') - 1
-  -- return !col || getline('.')[col - 1]  =~# '\s'
--- endfunction
--- ]])
+-- For coc completion
+vim.cmd([[
+  inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
+  inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+]])

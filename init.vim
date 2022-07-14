@@ -15,9 +15,9 @@ set scrolloff=3
 " 用空格替换tab
 set expandtab
 " 默认缩进4个空格
-set shiftwidth=4
+set shiftwidth=2
 " 制表符占4个空格
-set tabstop=4
+set tabstop=2
 
 " 换行时根据代码智能地添加缩进
 set smartindent

@@ -1,7 +1,6 @@
 # nvim
 - 使用vim-plug进行插件管理，使用vimL语言配置
 - 此分支不再更新
-此分支不再更新。
 ## 使用方法
 1. 根据[官方文档](https://github.com/neovim/neovim/wiki/Building-Neovim)安装nvim
 2. 安装依赖

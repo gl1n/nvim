@@ -74,6 +74,11 @@ _G.packer_plugins = {
     path = "/home/lu/.local/share/nvim/site/pack/packer/start/coc.nvim",
     url = "https://github.com/neoclide/coc.nvim"
   },
+  ["nvim-lspconfig"] = {
+    loaded = true,
+    path = "/home/lu/.local/share/nvim/site/pack/packer/start/nvim-lspconfig",
+    url = "https://github.com/neovim/nvim-lspconfig"
+  },
   ["nvim-tree.lua"] = {
     loaded = true,
     path = "/home/lu/.local/share/nvim/site/pack/packer/start/nvim-tree.lua",

@@ -4,8 +4,6 @@ vim.o.number=true
 vim.wo.relativenumber=true
 -- 显示光标所在行
 vim.wo.cursorline=true
--- 显示光标所在位置的行号和列号
-vim.o.ruler = true
 
 -- 上下翻动时，预留3行显示
 vim.o.scrolloff=3

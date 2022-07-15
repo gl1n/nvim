@@ -32,16 +32,33 @@ keymap('n', '<F4>', ':FloatermToggle<cr>', opts)
 
 
 -- For vim-go
--- Autocompletion
+-- autocompletion
 keymap('i', '<C-k>', '<C-x><C-o>', opts)
 
--- For coc completion
+-- For Coc
+-- tab completion
 vim.cmd([[
   inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
   inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 ]])
-
+-- GoTo code navigation.
 keymap('n', 'gd', '<Plug>(coc-definition)', opts)
 keymap('n', 'gy', '<Plug>(coc-type-definition)', opts)
 keymap('n', 'gi', '<Plug>(coc-implementation)', opts)
 keymap('n', 'gr', '<Plug>(coc-references)', opts)
+-- Use `[g` and `]g` to navigate diagnostics
+-- Use `:CocDiagnostics` to get all diagnostics of current buffer in location list.
+keymap('n', '[g', '<Plug>(coc-diagnostic-prev)', opts)
+keymap('n', ']g', '<Plug>(coc-diagnostic-next)', opts)
+ --Use K to show documentation in preview window.
+vim.cmd([[
+nnoremap <silent> K :call ShowDocumentation()<CR>
+
+function! ShowDocumentation()
+  if CocAction('hasProvider', 'hover')
+    call CocActionAsync('doHover')
+  else
+    call feedkeys('K', 'in')
+  endif
+endfunction
+]])

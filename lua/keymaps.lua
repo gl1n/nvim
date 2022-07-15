@@ -1,7 +1,5 @@
------------------------快捷键设置-----------------------
 -- NOTE: Use command ':verbose imap <tab>' to make sure tab is not mapped by
 -- other plugin before putting this into your config.
-
 
 local keymap = vim.api.nvim_set_keymap
 local opts = {noremap = true, silent = true}
@@ -14,8 +12,7 @@ keymap('i', '<C-s>', '<cmd>:w', opts)
 
 
 -- For nvim-tree
-keymap('n', '<leader>pc', '<cmd>NvimTreeCollapse<cr>', opts)
-keymap('n', '<leader>pt', '<cmd>NvimTreeToggle<cr>', opts)
+keymap('n', '<F5>', '<cmd>NvimTreeToggle<cr>', opts)
 
 
 -- nmap <F6> :TagbarToggle<CR>
@@ -27,7 +24,6 @@ keymap('n', '<leader>ff', '<cmd>Telescope find_files<cr>', opts)
 keymap('n', '<leader>fg', '<cmd>Telescope live_grep<cr>', opts)
 keymap('n', '<leader>fb', '<cmd>Telescope buffers<cr>', opts)
 keymap('n', '<leader>fh', '<cmd>Telescope help_tags<cr>', opts)
-
 
 -- For Floaterm
 -- F4 键进入/退出terminal模式
@@ -44,3 +40,8 @@ vim.cmd([[
   inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
   inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 ]])
+
+keymap('n', 'gd', '<Plug>(coc-definition)', opts)
+keymap('n', 'gy', '<Plug>(coc-type-definition)', opts)
+keymap('n', 'gi', '<Plug>(coc-implementation)', opts)
+keymap('n', 'gr', '<Plug>(coc-references)', opts)

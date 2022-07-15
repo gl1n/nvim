@@ -25,3 +25,6 @@ git clone --depth 1 https://github.com/wbthomason/packer.nvim ~/.local/share/nvi
 export GOPROXY=https://goproxy.cn
 nvim +PackerSync #+GoInstallBinaries
 ```
+4. 其他
+- 一些符号只有当终端中安装了[Nerd Font](https://www.nerdfonts.com/font-downloads)才会正常显示
+- 执行`nvim --startuptime <log file name>`可以查看nvim启动消耗的时间(ms)

@@ -67,3 +67,6 @@ endfunction
 keymap('n', '<leader>rn', '<Plug>(coc-rename)', re)
 -- Apply AutoFix to problem on the current line.
 keymap('n', '<leader>qf', '<Plug>(coc-fix-current)', re)
+
+-- switch between source/header files
+keymap('n', '<C-h>', ':CocCommand clangd.switchSourceHeader<cr>', nore)

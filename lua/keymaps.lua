@@ -9,8 +9,7 @@ keymap('n', '<SPACE>', '<Nop>', nore)
 vim.g.mapleader = ' '
 
 keymap('i', 'jk', '<ESC>', nore)
-keymap('i', '<C-s>', '<cmd>:w', nore)
-
+keymap('i', '<C-s>', '<cmd>w<cr>', nore)
 
 -- For nvim-tree
 keymap('n', '<F5>', '<cmd>NvimTreeToggle<cr>', nore)

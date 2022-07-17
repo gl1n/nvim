@@ -5,22 +5,29 @@ local keymap = vim.api.nvim_set_keymap
 local nore = {noremap = true, silent = true}
 local re = {noremap=false, silent = true}
 
+-- General
 keymap('n', '<SPACE>', '<Nop>', nore) 
 vim.g.mapleader = ' '
 
 keymap('i', 'jk', '<ESC>', nore)
+
 keymap('i', '<C-s>', '<cmd>w<cr>', nore)
 keymap('n', '<C-s>', '<cmd>w<cr>', nore)
+
+-- deal with buffers
 keymap('n', '<C-j>', '<cmd>bp<cr>', nore)
 keymap('n', '<C-k>', '<cmd>bp<cr>', nore)
 keymap('n', '<C-x>', '<cmd>bd %<cr>', nore)
 
+
 -- For nvim-tree
 keymap('n', '<F5>', '<cmd>NvimTreeToggle<cr>', nore)
+
 
 -- For tagbar
 -- nmap <F6> :TagbarToggle<CR>
 keymap('n', '<F6>', ':TagbarToggle<CR>', nore)
+
 
 -- For telescope
 -- Find files using Telescope command-line sugar.
@@ -28,6 +35,7 @@ keymap('n', '<leader>ff', '<cmd>Telescope find_files<cr>', nore)
 keymap('n', '<leader>fg', '<cmd>Telescope live_grep<cr>', nore)
 keymap('n', '<leader>fb', '<cmd>Telescope buffers<cr>', nore)
 keymap('n', '<leader>fh', '<cmd>Telescope help_tags<cr>', nore)
+
 
 -- For Floaterm
 -- F4 键进入/退出terminal模式
@@ -38,6 +46,7 @@ keymap('n', '<F4>', ':FloatermToggle<cr>', nore)
 -- For vim-go
 -- autocompletion
 keymap('i', '<C-n>', '<C-x><C-o>', nore)
+
 
 -- For Coc
 -- tab completion
@@ -57,7 +66,6 @@ keymap('n', ']g', '<Plug>(coc-diagnostic-next)', re)
  --Use K to show documentation in preview window.
 vim.cmd([[
 nnoremap <silent> K :call ShowDocumentation()<CR>
-
 function! ShowDocumentation()
   if CocAction('hasProvider', 'hover')
     call CocActionAsync('doHover')
@@ -70,6 +78,5 @@ endfunction
 keymap('n', '<leader>rn', '<Plug>(coc-rename)', re)
 -- Apply AutoFix to problem on the current line.
 keymap('n', '<leader>qf', '<Plug>(coc-fix-current)', re)
-
 -- switch between source/header files
 keymap('n', '<C-h>', ':CocCommand clangd.switchSourceHeader<cr>', nore)

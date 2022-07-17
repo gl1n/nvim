@@ -10,11 +10,15 @@ vim.g.mapleader = ' '
 
 keymap('i', 'jk', '<ESC>', nore)
 keymap('i', '<C-s>', '<cmd>w<cr>', nore)
+keymap('n', '<C-s>', '<cmd>w<cr>', nore)
+keymap('n', '<C-j>', '<cmd>bp<cr>', nore)
+keymap('n', '<C-k>', '<cmd>bp<cr>', nore)
+keymap('n', '<C-x>', '<cmd>bd %<cr>', nore)
 
 -- For nvim-tree
 keymap('n', '<F5>', '<cmd>NvimTreeToggle<cr>', nore)
 
-
+-- For tagbar
 -- nmap <F6> :TagbarToggle<CR>
 keymap('n', '<F6>', ':TagbarToggle<CR>', nore)
 
@@ -33,7 +37,7 @@ keymap('n', '<F4>', ':FloatermToggle<cr>', nore)
 
 -- For vim-go
 -- autocompletion
-keymap('i', '<C-k>', '<C-x><C-o>', nore)
+keymap('i', '<C-n>', '<C-x><C-o>', nore)
 
 -- For Coc
 -- tab completion
